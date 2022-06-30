@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- CSS only-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <link href="./Css/ROCID.css" type="text/css" rel="stylesheet" />
+    <script src="./script/ROCIDNEW.js"></script>
+
+
+    <title>身分證亂數產生器</title>
+
+
+</head>
+
+
+<body>
+    <h1>身分證亂數產生器</h1>
+    <br />
+    <h3>城市</h3>
+    <select class="form-select" aria-label="Default select example" id="form-select-city" onchange="FromSelsct()">
+        <option selected>請選擇</option>
+        <option value="A">臺北市</option>
+        <option value="B">臺中市</option>
+        <option value="C">基隆市</option>
+        <option value="D">臺南市</option>
+        <option value="E">高雄市</option>
+        <option value="F">新北市</option>
+        <option value="G">宜蘭縣</option>
+        <option value="H">桃園市</option>
+        <option value="I">嘉義市</option>
+        <option value="J">新竹縣</option>
+        <option value="K">苗栗縣</option>
+        <option value="M">南投縣</option>
+        <option value="N">彰化縣</option>
+        <option value="O">新竹市</option>
+        <option value="P">雲林縣</option>
+        <option value="Q">嘉義縣</option>
+        <option value="T">屏東縣</option>
+        <option value="U">花蓮縣</option>
+        <option value="V">臺東縣</option>
+        <option value="W">金門縣</option>
+        <option value="X">澎湖縣</option>
+        <option value="Z">連江縣</option>
+    </select>
+    <br />
+    <h3>性別</h3>
+    <select class="form-select" aria-label="Default select example" id="form-select-gender" onchange="FromSelsct()">
+        <option selected>請選擇</option>
+        <option value="1">男</option>
+        <option value="2">女</option>
+    </select>
+    <br />
+    <div class="d-grid gap-2 col-4 mx-auto">
+        <button type="button" class="btn btn-warning" id="Random">產生隨機身分證號</button>
+    </div>
+    <br />
+    <h3>亂數產生結果</h3>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="Random-Id" aria-describedby="basic-addon1" disabled>
+    </div>
+    <br />
+    <div class="d-grid gap-2 col-4 mx-auto">
+        <button type="button" class="btn btn-info" id="CheakRandom" style="visibility: hidden;">驗證</button>
+    </div>
+
+    <script>
+        //事件註冊區
+        //註冊下拉選單事件
+        document.getElementById("form-select-city").onchange = function () {
+
+            document.getElementById("Random-Id").value = '';
+            city = document.getElementById("form-select-city").value;
+
+            //radNumer.unshift(city);
+
+
+        }
+        document.getElementById("form-select-gender").onchange = function () {
+
+            Gender = document.getElementById("form-select-gender").value;
+            //radNumer.push(Gender);
+
+        }
+        document.getElementById("Random").onclick = function () {
+            if (Gender != "" || city != '') {
+                radNumer.unshift(Gender);
+                radNumer.unshift(city);
+                var a = Rad_IDNO();
+                document.getElementById("Random-Id").value = a;
+                document.getElementById("CheakRandom").style.visibility = "visible";
+                document.getElementById("form-select-city").selectedIndex = 0;
+                document.getElementById("form-select-gender").selectedIndex = 0;
+            } else {
+                alert("請選擇城市及性別");
+            }
+            start();
+        }
+        document.getElementById("CheakRandom").onclick = function () {
+            idno = document.getElementById("Random-Id").value
+            Cheak_IDNO();
+
+        }
+    </script>
+
+</body>
