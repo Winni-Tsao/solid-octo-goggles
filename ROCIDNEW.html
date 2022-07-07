@@ -13,14 +13,14 @@
     <script src="./script/ROCIDNEW.js"></script>
 
 
-    <title>身分證亂數產生器</title>
+    <title>本國人身分證亂數產生器</title>
 
 
 </head>
 
 
 <body>
-    <h1>身分證亂數產生器</h1>
+    <h1>本國人身分證亂數產生器</h1>
     <br />
     <h3>城市</h3>
     <select class="form-select" aria-label="Default select example" id="form-select-city" onchange="FromSelsct()">
@@ -61,12 +61,12 @@
     </div>
     <br />
     <h3>亂數產生結果</h3>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3" id="text">
         <input type="text" class="form-control" id="Random-Id" aria-describedby="basic-addon1" disabled>
     </div>
     <br />
     <div class="d-grid gap-2 col-4 mx-auto">
-        <button type="button" class="btn btn-info" id="CheakRandom" style="visibility: hidden;">驗證</button>
+        <button type="button" class="btn btn-info" id="CheakRandom" style="visibility: hidden;">驗證並複製</button>
     </div>
 
     <script>
@@ -103,7 +103,11 @@
         }
         document.getElementById("CheakRandom").onclick = function () {
             idno = document.getElementById("Random-Id").value
-            Cheak_IDNO();
+            if(Cheak_IDNO())
+             {  var node = document.getElementById("text");
+                copyText(node);
+             }
+             start();
 
         }
     </script>
