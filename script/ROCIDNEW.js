@@ -12,6 +12,7 @@
         var num = new Array();//乘過的集合
         var num1 = new Array();//乘過後分解
         var total = 0;//計算乘過第一次的尾數總和
+        var Copyinput;
 
         //亂數產生第3-9
         function rad() {
@@ -46,7 +47,12 @@
                 alert("有問題")
 
             }
-            else alert("正確")
+            else
+             {
+               // alert("沒問題");
+                return true;
+             }
+            
         }
 
         function start() //清空
@@ -124,8 +130,28 @@
             else
                 return str;
         }
+        //複製
+        function copyText(node) {
+            if (document.body.createTextRange) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(node);
+                range.select();
+                document.execCommand("copy");
+                alert("驗證及複製成功!");
+            } else if (window.getSelection) {
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(node);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand("copy");
+                alert("驗證及複製成功!");
+            } else {
+                alert('驗證成功，但無法複製內容、瀏覽器不支援');       
+            }
+        }
 
-
+        
 
        
 
